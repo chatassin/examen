@@ -8,7 +8,7 @@ import { date } from "drizzle-orm/mysql-core";
 
 export const metadata: Metadata = {
   title: "Restaurant ...",
-  description: "Introduisez votre demande de réservation ci-dessous",
+  description: "Réservations",
 };
 
 export default async function RootLayout({

@@ -2,10 +2,10 @@ import Button from "@/components/Button";
 import { createBooking } from "@/lib/booking";
 import { redirect } from "next/navigation";
 
-async function handleCreatePost(formData: FormData) {
+async function handleCreateBooking(formData: FormData) {
   "use server";
   await createBooking(formData);
-  redirect("/blog");
+  redirect("/bookings");
 }
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       <p className="text-left text-zinc-600 dark:text-zinc-400 leading-relaxed sm:text-lg font-bold">
         Formulaire de réservation
       </p>
-      <form action={handleCreatePost} className="space-y-6">
+      <form action={handleCreateBooking} className="space-y-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-1">
             Nom
@@ -70,10 +70,6 @@ export default function Home() {
           Enregistrer la réservation
         </button>
       </form>
-
-      <div className="flex flex-col gap-3 mt-4 w-full sm:w-auto sm:flex-row">
-        <Button href="/bookings">voir les réservations</Button>
-      </div>
 
       {/* C'est ici qu'on affiche un formulaire de réservation donc c'est ici qu'on crée de nouvelles réservations */}
     </div>

@@ -32,7 +32,7 @@ export async function editBooking(form: FormData) {
   redirect((await headers()).get("referer") ?? "/");
 }
 
-export async function deletePost(id: string) {
+export async function deleteBooking(id: string) {
   await db.delete(bookingTable).where(eq(bookingTable.id, id));
   redirect((await headers()).get("referer") ?? "/");
 }

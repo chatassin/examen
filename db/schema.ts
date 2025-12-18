@@ -6,5 +6,4 @@ export const bookingTable = pgTable("reservation", {
   telnumber: text().notNull(),
   numberppl: text().notNull(),
   date: text().notNull(),
-  //done: boolean().default(false).notNull(),
 });
