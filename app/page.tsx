@@ -1,4 +1,12 @@
 import Button from "@/components/Button";
+import { createBooking } from "@/lib/booking";
+import { redirect } from "next/navigation";
+
+async function handleCreatePost(formData: FormData) {
+  "use server";
+  await createBooking(formData);
+  redirect("/blog");
+}
 
 export default function Home() {
   return (
@@ -6,10 +14,65 @@ export default function Home() {
       <p className="text-left text-zinc-600 dark:text-zinc-400 leading-relaxed sm:text-lg font-bold">
         Formulaire de réservation
       </p>
+      <form action={handleCreatePost} className="space-y-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium mb-1">
+            Nom
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            className="w-full p-3 border border-zinc-300 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 text-black dark:text-white"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="telnumber" className="block text-sm font-medium mb-1">
+            Numéro de téléphone
+          </label>
+          <textarea
+            name="telnumber"
+            id="telnumber"
+            required
+            className="w-full p-3 border border-zinc-300 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 text-black dark:text-white"
+          ></textarea>
+        </div>
+        <div>
+          <label htmlFor="numberppl" className="block text-sm font-medium mb-1">
+            Nombre de personnes
+          </label>
+          <textarea
+            name="numberppl"
+            id="numberppl"
+            required
+            className="w-full p-3 border border-zinc-300 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 text-black dark:text-white"
+          ></textarea>
+        </div>
+
+        <div>
+          <label htmlFor="date" className="block text-sm font-medium mb-1">
+            Date et heure
+          </label>
+          <textarea
+            name="date"
+            id="date"
+            required
+            className="w-full p-3 border border-zinc-300 rounded-lg dark:bg-zinc-800 dark:border-zinc-700 text-black dark:text-white"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition"
+        >
+          Enregistrer la réservation
+        </button>
+      </form>
 
       <div className="flex flex-col gap-3 mt-4 w-full sm:w-auto sm:flex-row">
         <Button href="/bookings">voir les réservations</Button>
-        <Button variant="outline">AUTRE</Button>
       </div>
 
       {/* C'est ici qu'on affiche un formulaire de réservation donc c'est ici qu'on crée de nouvelles réservations */}
