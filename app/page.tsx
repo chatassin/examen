@@ -1,4 +1,3 @@
-import Button from "@/components/Button";
 import { createBooking } from "@/lib/booking";
 import { redirect } from "next/navigation";
 
@@ -70,8 +69,6 @@ export default function Home() {
           Enregistrer la réservation
         </button>
       </form>
-
-      {/* C'est ici qu'on affiche un formulaire de réservation donc c'est ici qu'on crée de nouvelles réservations */}
     </div>
   );
 }
