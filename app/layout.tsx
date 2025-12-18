@@ -4,10 +4,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { db } from "@/db";
 import { bookingTable } from "@/db/schema";
+import { date } from "drizzle-orm/mysql-core";
 
 export const metadata: Metadata = {
-  title: "Mon Wikipédia",
-  description: "Clone de Wikipédia avec Next.js et Drizzle",
+  title: "Restaurant ...",
+  description: "Introduisez votre demande de réservation ci-dessous",
 };
 
 export default async function RootLayout({
@@ -15,16 +16,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // On récupère les articles pour la barre de recherche (R du CRUD)
-  const articles = await db
-    .select({
-      id: bookingTable.id,
-      name: bookingTable.name,
-      telnumber: bookingTable.telnumber,
-      numberppl: bookingTable.numberppl,
-    })
-    .from(bookingTable);
-
   return (
     <html lang="fr">
       <body className="antialiased">
